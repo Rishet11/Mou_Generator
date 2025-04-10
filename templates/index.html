@@ -143,10 +143,15 @@
 
             <div class="row g-4 mt-3">
                 <div class="col-md-6">
-                    <label for="{{ form.number_of_revisions.id }}" class="form-label">Number of Revisions</label>
+                    <label for="{{ form.number_of_revisions.id }}" class="form-label">
+                        Number of Revisions
+                        <span class="tooltip-icon" title="Specify the maximum number of revisions allowed for the project.">
+                            <i class="fas fa-question-circle"></i>
+                        </span>
+                    </label>
                     <div class="input-group">
                         <span class="input-group-text"><i class="fas fa-sync-alt"></i></span>
-                        {{ form.number_of_revisions(class="form-control", min=0) }}
+                        {{ form.number_of_revisions(class="form-control", min=0, placeholder="Enter number of revisions") }}
                     </div>
                     <div class="input-info">Specify the number of revisions allowed</div>
                     {% if form.number_of_revisions.errors %}
