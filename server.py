@@ -3,9 +3,10 @@ from flask_wtf import FlaskForm
 from wtforms import StringField, TextAreaField, DecimalField, IntegerField, SelectField, BooleanField, SubmitField
 from wtforms.validators import DataRequired, Optional
 import datetime
+import os
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = 'your-secret-key'  # Change this in production
+app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', 'default-dev-key')  # Use environment variable in production
 
 class MoUForm(FlaskForm):
     # Freelancer details
@@ -88,4 +89,4 @@ def internal_server_error(e):
     return render_template('500.html'), 500
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host='0.0.0.0', port=int(os.environ.get('PORT', 8080)))
