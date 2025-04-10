@@ -2,9 +2,11 @@ services:
   - type: web
     name: mou-generator
     env: python
-    buildCommand: pip install -r requirements.txt
+    buildCommand: |
+      python -m venv .venv
+      source .venv/bin/activate
+      pip install -r requirements.txt
     startCommand: gunicorn server:app
-    publishDirectory: ./ # Serving directly from root directory
     envVars:
       - key: PYTHON_VERSION
         value: 3.9.12
