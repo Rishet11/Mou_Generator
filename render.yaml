@@ -4,6 +4,7 @@ services:
     env: python
     buildCommand: pip install -r requirements.txt
     startCommand: gunicorn server:app
+    publishDirectory: ./ # Serving directly from root directory
     envVars:
       - key: PYTHON_VERSION
         value: 3.9.12
